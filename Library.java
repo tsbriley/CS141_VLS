@@ -16,7 +16,7 @@ public class Library {
 
         // Displaying menu
         System.out.println(
-                "==================  Welcome to the GFG Library!  ====================");
+                "============================  Welcome ============================ ");
         System.out.println(
                 "                  Select From The Following Options:               ");
         System.out.println(
