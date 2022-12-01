@@ -7,8 +7,10 @@ public class Main {
     //Create our list variable 'books'
     static List<Book> books;
 
+    static String term;
+
     public static void main(String[] args) {
-        //initialize our arraylist so we are able to populate it with our book objects.
+        //initialize our arraylist, so we are able to populate it with our book objects.
         books = new ArrayList<>();
         //User Startup
         System.out.println("---------------------------------");
@@ -78,6 +80,22 @@ public class Main {
                 System.out.println("You have selected 'Remove a book'");
                 System.out.println("         Loading now...");
                 System.out.println("---------------------------------");
+
+                //Make this into a remove method
+                System.out.println("Please Enter the title of the Book you wish to Delete.");
+                term = keyboard.nextLine();
+                book = searchBook(term);
+                System.out.println("Are you sure you want to remove : " + book.bookName + " from your virtual Bookcase?");
+                System.out.println("\t1 : yes");
+                System.out.println("\t2 : no");
+                int input = keyboard.nextInt();
+
+                if(input == 1) {
+                    books.remove(book);
+                    System.out.println("Successfully Removed");
+                    System.out.println("---------------------------------");
+            }
+                menu();
                 break;
             case 3:
                 System.out.println("You have selected 'Update a book'");
@@ -89,7 +107,10 @@ public class Main {
                 System.out.println("         Loading now...");
                 System.out.println("---------------------------------");
                 //loop through array of books assigning them to a number you can type and view.
-
+                System.out.println("Please Enter the title of the Book you wish to view.");
+                term = keyboard.nextLine();
+                book = searchBook(term);
+                book.viewBook();
                 //After its purpose is fulfilled recall the menu method.
                 menu();
                 break;
@@ -97,10 +118,8 @@ public class Main {
                 System.out.println("You have selected 'Search Library'");
                 System.out.println("         Loading now...");
                 System.out.println("---------------------------------");
-                System.out.println("Please enter the Book Name:");
-                String term = keyboard.nextLine();
-                book = searchBook(term);
-                book.viewBook();
+
+
                 //After its purpose is fulfilled recall the menu method.
                 menu();
                 break;
@@ -119,13 +138,20 @@ public class Main {
 
     //Search Book Method
     public static Book searchBook(String term) {
+            //For each book in our books array
             for(Book book: books) {
                 //Search if the input term matches a book we have stored in our array and then return that book;
                 if(book.bookName.toLowerCase().equals(term.toLowerCase())) {
                     return book;
                 }
             }
-            //If the input does not match return null (change so it displays an error message and retakes input)
+            //if it doesn't match return null and reinitialize menu method
+            System.out.println("The book you've entered does not match a book in your Bookcase");
+            System.out.println("        Please try again");
+            System.out.println("---------------------------------");
+            menu();
+
+            //If the input does not match return null (change, so it displays an error message and retakes input)
             return null;
         }
     //End of Search Book Method
