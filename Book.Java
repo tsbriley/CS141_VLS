@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Book {
 
+    //Create our general characteristics that each book will have
     public String bookName;
     public String bookAuthor;
     public int bookPageCount;
@@ -13,6 +14,7 @@ public class Book {
     //Method to add a book
     public void addBook() {
 
+        //Get user input and set each characteristic to that input.
         this.input = new Scanner(System.in);
         System.out.println("Please enter the Book Name:");
         this.bookName = input.nextLine();
@@ -31,8 +33,10 @@ public class Book {
 
         System.out.println("Thank you, Successfully added your book.");
     }
+    //End addBook method
 
     //Method to view a book
+    //Call this with the prefix book after searching to display the searched books characteristics in a formatted view.
     public void viewBook(){
         System.out.println(this.bookName + " By: "+ this.bookAuthor);
         System.out.println(this.bookGenre);
