@@ -32,6 +32,7 @@ public class Book {
         this.bookRating = this.input.nextDouble();
 
         System.out.println("Thank you, Successfully added your book.");
+        System.out.println("---------------------------------");
     }
     //End addBook method
 
@@ -42,5 +43,13 @@ public class Book {
         System.out.println(this.bookGenre);
         System.out.println("Your Progress is: " + this.bookProgress + " out of " + this.bookPageCount);
         System.out.println("You rated this book: " + this.bookRating);
+        System.out.println("---------------------------------");
+        System.out.println("       Type 1 to continue");
+        if(input.nextInt() == 1){
+
+        }
+
     }
+
+
 }
