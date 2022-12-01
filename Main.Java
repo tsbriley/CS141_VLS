@@ -4,9 +4,11 @@ public class Main {
     private static int choice;
     static Scanner keyboard = new Scanner(System.in);
     static String userName;
+    //Create our list variable 'books'
     static List<Book> books;
 
     public static void main(String[] args) {
+        //initialize our arraylist so we are able to populate it with our book objects.
         books = new ArrayList<>();
         //User Startup
         System.out.println("---------------------------------");
@@ -23,6 +25,8 @@ public class Main {
         menu();
     }
 
+
+    //Menu method
     private static void menu() {
         Book book;
 
@@ -61,9 +65,13 @@ public class Main {
                 System.out.println("You have selected 'Add a book'");
                 System.out.println("         Loading now...");
                 System.out.println("---------------------------------");
+                //Set book = a new book
                 book = new Book();
+                //Call the addBook method which fills our book object with its characteristics.
                 book.addBook();
+                //Add our book object with the characteristics to our arraylist.
                 books.add(book);
+                //After its purpose is fulfilled recall the menu method.
                 menu();
                 break;
             case 2:
@@ -80,8 +88,9 @@ public class Main {
                 System.out.println("You have selected 'View a book'");
                 System.out.println("         Loading now...");
                 System.out.println("---------------------------------");
-                //loop through array of books assigning them to a number you can type and view
+                //loop through array of books assigning them to a number you can type and view.
 
+                //After its purpose is fulfilled recall the menu method.
                 menu();
                 break;
             case 5:
@@ -92,6 +101,7 @@ public class Main {
                 String term = keyboard.nextLine();
                 book = searchBook(term);
                 book.viewBook();
+                //After its purpose is fulfilled recall the menu method.
                 menu();
                 break;
             case 6:
@@ -106,12 +116,18 @@ public class Main {
         } //End of switch system
 
     }//End of menu Method
-        public static Book searchBook(String term) {
+
+    //Search Book Method
+    public static Book searchBook(String term) {
             for(Book book: books) {
+                //Search if the input term matches a book we have stored in our array and then return that book;
                 if(book.bookName.toLowerCase().equals(term.toLowerCase())) {
                     return book;
                 }
             }
+            //If the input does not match return null (change so it displays an error message and retakes input)
             return null;
         }
+    //End of Search Book Method
 }
+
